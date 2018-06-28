@@ -1,5 +1,21 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
+{{#link-to 'index'}}Index{{/link-to}}
+{{#link-to 'about'}}About{{/link-to}}
+{{#link-to 'nested'}}Nested{{/link-to}}
+<h1>Welcome to Ember</h1>
+{{#ui-tabs name='tabs' as |ui tabs|}}
+  {{#ui.header as |ui header|}}
+    {{#each header.tabs as |tab|}}
+      <button onClick={{action tabs.setActive tab.tabComponent}}>{{tab.label}}</button>
+    {{/each}}
+    {{ui.routableTab onClick=(action 'linkToNested') label="Nested"}}
+  {{/ui.header}}
+  {{#ui.content as |content|}}
+    {{content.tab content=(component 'content/x-wat') label="wat"}}
+    {{content.tab content=(component 'content/x-foo') label="foo"}}
+    <!-- from-elsewhere 'tabContent' -->
+    <!-- only display the active tab and then send the tabs conent-part to to-elsewhere-->
+    <!-- header does not need to know about tabs or does it? -->
+  {{/ui.content}}
+{{/ui-tabs}}
+<div>Top level context end - After tabs</div>
 {{outlet}}

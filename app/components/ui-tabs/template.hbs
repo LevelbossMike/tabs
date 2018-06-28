@@ -1,0 +1,19 @@
+{{yield (hash
+  header=(component
+    'ui-tabs/header'
+    key='header'
+    tabComponents=tabComponents
+    tabsContentName=name
+  )
+  content=(component
+    'ui-tabs/content'
+    key='content'
+    activeTabComponent=activeTabComponent
+    didInsertTab=(action 'didInsertTab')
+    tabsContentName=name
+  )
+)
+(hash
+  setActive=(action 'setTabActive')
+)
+}}

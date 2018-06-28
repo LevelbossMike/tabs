@@ -1,0 +1,7 @@
+{{yield 
+  (hash
+    tab=(component 'ui-tabs/tab' activeTabComponent=activeTabComponent named=tabsContentName)
+    routableTab=(component 'ui-tabs/routable-tab' activeTabComoonent=activeTabComponent named=tabsContentName)
+  )
+}}
+{{from-elsewhere name=tabsContentName}}
